@@ -3,6 +3,7 @@ var morgan = require('morgan');
 var dishRouter = require('./dishRouter');
 var promoRouter = require('./promoRouter');
 var leaderRouter = require('./leaderRouter');
+var bodyParser = require('body-parser');
 
 var hostname = 'localhost';
 var port = 3000;
@@ -11,7 +12,7 @@ var app = express();
 
 app.use(morgan('dev'));
 
-app.use('/dishes', dishRouter);
+app.use('/dishes', dishRouter(express, bodyParser));
 app.use('/promotions', promoRouter);
 app.use('/leadership', leaderRouter);
 
